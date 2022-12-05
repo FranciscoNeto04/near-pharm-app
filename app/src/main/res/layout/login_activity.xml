@@ -19,7 +19,7 @@
 
     <TextView
         android:id="@+id/name"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="NearPharm"
         android:layout_marginTop="16dp"
@@ -41,13 +41,13 @@
         app:layout_constraintTop_toBottomOf="@id/name" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/email"
+        android:id="@+id/cpf_cnpj"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/slogan"
         app:layout_constraintStart_toStartOf="@id/slogan"
         app:layout_constraintEnd_toEndOf="@id/slogan"
-        android:hint="Email"
+        android:hint="CPF/CNPJ"
         android:background="@drawable/edit_text_background"
         android:paddingVertical="8dp"
         android:paddingHorizontal="10dp"
@@ -57,9 +57,9 @@
         android:id="@+id/password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/email"
-        app:layout_constraintStart_toStartOf="@id/email"
-        app:layout_constraintEnd_toEndOf="@id/email"
+        app:layout_constraintTop_toBottomOf="@+id/cpf_cnpj"
+        app:layout_constraintStart_toStartOf="@id/cpf_cnpj"
+        app:layout_constraintEnd_toEndOf="@id/cpf_cnpj"
         android:hint="Senha"
         android:background="@drawable/edit_text_background"
         android:paddingVertical="8dp"
@@ -73,7 +73,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/singup_button"
+        app:layout_constraintEnd_toStartOf="@id/signup_button"
         android:text="Entrar"
         android:background="@drawable/button_background"
         android:paddingVertical="16dp"
