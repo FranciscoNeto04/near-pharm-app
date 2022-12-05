@@ -2,7 +2,7 @@ package com.example.nearpharm.model
 
 class UserModel (
     val id: Long,
-    val logo: String,
+    val logo: String?,
     val cpf: String?,
     val cnpj: String?,
     val name: String,
