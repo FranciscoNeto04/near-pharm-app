@@ -1,4 +1,6 @@
 package com.example.nearpharm.repository
 
-class LoginRepository {
+import com.example.nearpharm.api.UserApi
+
+class LoginRepository(private val user: UserApi) {
 }

@@ -9,9 +9,14 @@ class HomePageActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         if(isUser) {
-            setContentView(R.layout.login_activity)
+            setContentView(R.layout.homepage_user_activity)
         } else {
-            setContentView(R.layout.login_activity)
+            setContentView(R.layout.homepage_pharm_activity)
         }
+    }
+
+    private fun setupUser(){
+        setContentView(R.layout.login_activity)
+
     }
 }

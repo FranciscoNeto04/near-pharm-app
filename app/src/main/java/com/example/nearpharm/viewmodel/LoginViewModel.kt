@@ -1,4 +1,7 @@
 package com.example.nearpharm.viewmodel
 
-class LoginViewModel {
+import androidx.lifecycle.ViewModel
+import com.example.nearpharm.repository.LoginRepository
+
+class LoginViewModel(private val repository: LoginRepository): ViewModel()  {
 }

@@ -7,14 +7,15 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import br.com.arch.toolkit.delegate.viewProvider
 import com.example.nearpharm.adapter.ProductAdapter
 
 class PharmacyDetailActivity: AppCompatActivity(R.layout.pharmacy_detail_activity) {
-    private val average = findViewById<TextView>(R.id.avg_products)
-    private val products = findViewById<RecyclerView>(R.id.recycler_products)
-    private val name = findViewById<TextView>(R.id.name_pharm)
-    private val phone = findViewById<TextView>(R.id.phone_pharm)
-    private val logo = findViewById<ImageView>(R.id.logo)
+    private val average: TextView by viewProvider(R.id.avg_products)
+    private val name: TextView by viewProvider(R.id.name_pharm)
+    private val phone: TextView by viewProvider(R.id.phone_pharm)
+    private val logo:ImageView by viewProvider(R.id.logo)
+    private val products: RecyclerView by viewProvider(R.id.recycler_products)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
