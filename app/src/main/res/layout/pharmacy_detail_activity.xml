@@ -39,12 +39,21 @@
             app:layout_constraintTop_toBottomOf="@+id/name_pharm"
             android:layout_marginTop="8dp"/>
         <TextView
+            android:id="@+id/address_pharm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Style_Subtitle"
+            android:text="Endereço AAAAAA"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@+id/phone_pharm"
+            android:layout_marginTop="8dp"/>
+        <TextView
             android:id="@+id/avg_products"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/pharmacy_average_products"
             android:gravity="center"
-            app:layout_constraintTop_toBottomOf="@+id/phone_pharm"
+            app:layout_constraintTop_toBottomOf="@+id/address_pharm"
             android:layout_marginTop="8dp"/>
         <TextView
             android:id="@+id/title"
