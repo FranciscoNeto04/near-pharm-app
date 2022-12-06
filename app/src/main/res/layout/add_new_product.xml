@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/deafult_light_blue">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cadastrar um novo produto:"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/name"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        style="@style/Style_Title"
+        android:layout_marginTop="16dp"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edit_text_background"
+        app:layout_constraintBottom_toTopOf="@id/type"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        android:hint="Nome do produto"
+        app:layout_constraintVertical_chainStyle="packed"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="8dp" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edit_text_background"
+        app:layout_constraintTop_toBottomOf="@id/name"
+        app:layout_constraintBottom_toTopOf="@id/price"
+        android:hint="Tipo do produto"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="8dp" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edit_text_background"
+        android:hint="Preço"
+        app:layout_constraintTop_toBottomOf="@id/type"
+        android:inputType="number"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="8dp"
+        app:layout_constraintBottom_toTopOf="@id/add_button"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/add_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Cadastrar"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        android:layout_margin="16dp"
+        android:background="@drawable/button_background"
+        android:paddingVertical="16dp"
+        android:paddingHorizontal="22dp"
+        style="@style/Style_Title"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
