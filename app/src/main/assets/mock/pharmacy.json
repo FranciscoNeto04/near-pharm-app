@@ -1,0 +1,30 @@
+{
+  "id": 1000,
+  "logo": "",
+  "cpf": null,
+  "cnpj": "",
+  "name": "Droga Raia",
+  "address": "Av. Dom Pedro II, 121 - Jardim, Santo André - SP, 09080-110",
+  "phone": "01144681617",
+  "password": "123456",
+  "products" : [
+    {
+      "id": 2000,
+      "nameProduct": "Dipirona 500mg",
+      "price": 10.00,
+      "type": "Analgésico"
+    },
+    {
+      "id": 2001,
+      "nameProduct": "Polaramine 2mg",
+      "price": 15.00,
+      "type": "Antialérgico"
+    },
+    {
+      "id": 2002,
+      "nameProduct": "Diclofenaco 20mg",
+      "price": 12.00,
+      "type": "Anti-inflamatório"
+    }
+  ]
+}

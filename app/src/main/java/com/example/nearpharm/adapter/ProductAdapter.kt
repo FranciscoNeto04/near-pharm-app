@@ -16,8 +16,8 @@ class ProductAdapter (private val productList: List<ProductModel>):  RecyclerVie
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val currentItem = productList[position]
-        holder.name.text = currentItem.nameProduct
-        holder.type.text = currentItem.type
+        holder.name.text = currentItem.productName
+        holder.type.text = currentItem.productType
         holder.price.text = currentItem.price.toString()
 
     }

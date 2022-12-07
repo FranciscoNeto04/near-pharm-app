@@ -1,12 +1,13 @@
 [
   {
     "id": 1000,
-    "logo": "",
+    "logo": "https://i.imgur.com/EZvCacK.png",
     "cpf": null,
-    "cnpj": "",
+    "cnpj": "63.752.182/0001-77",
     "name": "Droga Raia",
     "address": "Av. Dom Pedro II, 121 - Jardim, Santo André - SP, 09080-110",
     "phone": "01144681617",
+    "password": "123456",
     "products" : [
       {
         "id": 2000,
@@ -30,12 +31,13 @@
   },
   {
     "id": 1001,
-    "logo": "",
+    "logo": "https://i.imgur.com/EZvCacK.png",
     "cpf": null,
-    "cnpj": "",
+    "cnpj": "63.752.182/0001-77",
     "name": "Drogaria São Paulo",
     "address": "Av. Sapopemba, 8467 - Vila Fatima, São Paulo - SP, 03988-010",
     "phone": "01121439366",
+    "password": "123456",
     "products" : [
       {
         "id": 2000,

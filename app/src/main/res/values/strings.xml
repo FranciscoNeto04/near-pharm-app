@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">NearPharm</string>
-    <string name="pharmacy_average_products">Esta farmácia é %1$d%% mais barata que as demais.</string>
+    <string name="pharmacy_average_products">Esta farmácia é %1$s%% mais barata que as demais.</string>
+    <string name="distance_km">%1$skm</string>
 </resources>

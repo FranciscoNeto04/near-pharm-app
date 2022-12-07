@@ -1,0 +1,9 @@
+{
+  "reference" : "Pharmacy",
+  "default" : 0,
+  "saved_data": [{
+    "description": "Default",
+    "code": 200,
+    "data_path": "mock/pharmacy.json"
+  }]
+}

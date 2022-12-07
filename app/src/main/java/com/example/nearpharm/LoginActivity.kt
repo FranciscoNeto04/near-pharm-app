@@ -4,15 +4,24 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
-import androidx.appcompat.widget.AppCompatEditText
+import android.widget.Toast
 import br.com.arch.toolkit.delegate.viewProvider
+import com.example.nearpharm.model.LoginModel
+import com.example.nearpharm.retrofit.ApiInterface
+import com.example.nearpharm.retrofit.RetrofitInstance
+import com.example.nearpharm.viewmodel.UserViewModel
+import okhttp3.ResponseBody
+import org.koin.android.viewmodel.ext.android.viewModel
+import retrofit2.Response
 
 class LoginActivity : AppCompatActivity(R.layout.login_activity) {
     private val buttonLogin: Button by viewProvider(R.id.login_button)
     private val buttonSignUp: TextView  by viewProvider(R.id.signup_button)
-    private val edtEmail: AppCompatEditText by viewProvider(R.id.cpf_cnpj)
-    private val edtPassword: AppCompatEditText by viewProvider(R.id.password)
+    private val edtEmail: EditText by viewProvider(R.id.cpf_cnpj)
+    private val edtPassword: EditText by viewProvider(R.id.password)
+    private val pharmacyViewModel: UserViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,12 +30,40 @@ class LoginActivity : AppCompatActivity(R.layout.login_activity) {
 
     private fun setupButtons(){
         buttonLogin.setOnClickListener {
-            val intent = Intent(this, HomePageActivity::class.java)
-            startActivity(intent)
+            signin(edtEmail.text.toString(),edtPassword.text.toString())
         }
         buttonSignUp.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    private fun signin(token: String, password: String){
+        val retIn = RetrofitInstance.getRetrofitInstance().create(ApiInterface::class.java)
+        val signInInfo = LoginModel(token, password)
+        retIn.signin(signInInfo).enqueue(object : retrofit2.Callback<ResponseBody> {
+            override fun onFailure(call: retrofit2.Call<ResponseBody>, t: Throwable) {
+                Toast.makeText(
+                    this@LoginActivity,
+                    t.message,
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+            override fun onResponse(call: retrofit2.Call<ResponseBody>, response: Response<ResponseBody>) {
+                if (response.code() == 200) {
+                    pharmacyViewModel.getUser("500").observe(this@LoginActivity) {
+                        data {
+                            val intent = Intent(this@LoginActivity, HomePageActivity::class.java)
+                            intent.putExtra("id-user-extra", it.cpf)
+                            intent.putExtra("is-pharm-extra", it.isPharm)
+                            startActivity(intent)
+                        }
+                    }
+                    Toast.makeText(this@LoginActivity, "Login success!", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this@LoginActivity, "Login failed!", Toast.LENGTH_SHORT).show()
+                }
+            }
+        })
     }
 }
