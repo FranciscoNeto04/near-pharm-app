@@ -9,6 +9,8 @@ import android.widget.TextView
 import android.widget.Toast
 import br.com.arch.toolkit.delegate.viewProvider
 import com.example.nearpharm.model.LoginModel
+import com.example.nearpharm.model.LoginResponse
+import com.example.nearpharm.model.UserModel
 import com.example.nearpharm.retrofit.ApiInterface
 import com.example.nearpharm.retrofit.RetrofitInstance
 import com.example.nearpharm.viewmodel.UserViewModel
@@ -41,24 +43,20 @@ class LoginActivity : AppCompatActivity(R.layout.login_activity) {
     private fun signin(token: String, password: String){
         val retIn = RetrofitInstance.getRetrofitInstance().create(ApiInterface::class.java)
         val signInInfo = LoginModel(token, password)
-        retIn.signin(signInInfo).enqueue(object : retrofit2.Callback<ResponseBody> {
-            override fun onFailure(call: retrofit2.Call<ResponseBody>, t: Throwable) {
+        retIn.signin(signInInfo).enqueue(object : retrofit2.Callback<LoginResponse> {
+            override fun onFailure(call: retrofit2.Call<LoginResponse>, t: Throwable) {
                 Toast.makeText(
                     this@LoginActivity,
                     t.message,
                     Toast.LENGTH_SHORT
                 ).show()
             }
-            override fun onResponse(call: retrofit2.Call<ResponseBody>, response: Response<ResponseBody>) {
+            override fun onResponse(call: retrofit2.Call<LoginResponse>, response: Response<LoginResponse>) {
                 if (response.code() == 200) {
-                    pharmacyViewModel.getUser("1").observe(this@LoginActivity) {
-                        data {
-                            com.example.nearpharm.model.UserData.isPharm = it.isPharm
-                            val intent = Intent(this@LoginActivity, HomePageActivity::class.java)
-                            intent.putExtra("is-pharm-extra", it.isPharm)
-                            startActivity(intent)
-                        }
-                    }
+                    com.example.nearpharm.model.UserData.isPharm = response.body()!!.isPharm
+                    val intent = Intent(this@LoginActivity, HomePageActivity::class.java)
+                    intent.putExtra("is-pharm-extra", response.body()!!.isPharm)
+                    startActivity(intent)
                     Toast.makeText(this@LoginActivity, "Login success!", Toast.LENGTH_SHORT).show()
                 } else {
                     Toast.makeText(this@LoginActivity, "Login failed!", Toast.LENGTH_SHORT).show()

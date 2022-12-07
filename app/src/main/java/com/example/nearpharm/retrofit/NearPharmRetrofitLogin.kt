@@ -1,6 +1,8 @@
 package com.example.nearpharm.retrofit
 
 import com.example.nearpharm.model.LoginModel
+import com.example.nearpharm.model.LoginResponse
+import com.example.nearpharm.model.UserModel
 import okhttp3.OkHttpClient
 import okhttp3.ResponseBody
 import okhttp3.logging.HttpLoggingInterceptor
@@ -13,7 +15,7 @@ import retrofit2.http.POST
 interface ApiInterface {
     @Headers("Content-Type:application/json")
     @POST("authentication")
-    fun signin(@Body info: LoginModel): retrofit2.Call<ResponseBody>
+    fun signin(@Body info: LoginModel): retrofit2.Call<LoginResponse>
 }
 
 class RetrofitInstance {

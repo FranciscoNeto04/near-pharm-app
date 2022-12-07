@@ -2,6 +2,7 @@ package com.example.nearpharm
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,18 +14,20 @@ import com.example.nearpharm.model.ProductModel
 import com.example.nearpharm.model.UserModel
 import com.example.nearpharm.viewmodel.UserViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.squareup.picasso.Picasso
 import org.koin.android.viewmodel.ext.android.viewModel
 import kotlin.random.Random
 
 class HomePageActivity: AppCompatActivity() {
     private val pharmacyViewModel: UserViewModel by viewModel()
     private val createProduct by viewProvider<FloatingActionButton>(R.id.fab)
+    private val map by viewProvider<ImageView>(R.id.map)
     private val pharmacies by viewProvider<RecyclerView>(R.id.recycler)
     private val products by viewProvider<RecyclerView>(R.id.recycler_products)
-    private var isPharm by extraProvider<Boolean>("is-pharm-extra")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val isPharm = intent.extras?.getBoolean("is-pharm-extra")
         if(isPharm == false) {
             setContentView(R.layout.homepage_user_activity)
             pharmacies.layoutManager = LinearLayoutManager(this@HomePageActivity, LinearLayoutManager.VERTICAL, false)
@@ -85,6 +88,7 @@ class HomePageActivity: AppCompatActivity() {
     }
 
     private fun setupDataUser(){
+        Picasso.get().load("https://i.imgur.com/z7US03x.png").into(map)
         pharmacyViewModel.getPharmacies().observe(this) {
             data {
                 val adapterCategory = PharmacyAdapter(it, this@HomePageActivity, randomizeDistance().toString(), ::onClickPharmacy)

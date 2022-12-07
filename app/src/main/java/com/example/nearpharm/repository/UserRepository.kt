@@ -64,14 +64,7 @@ class UserRepository(private val user: UserApi) {
         GlobalScope.launch {
             try {
                 liveData.postLoading()
-                val userLivedata = UserModel(
-                    idUser,
-                    "Drogasil",
-                    "Rua do Oratório, 500",
-                    "(11) 4002-8922",
-                    "123",
-                    true
-                )
+                val userLivedata = user.getPharmacy(idUser.toLong())
                 liveData.postData(userLivedata)
             } catch (e: Exception) {
                 liveData.postError(e)
