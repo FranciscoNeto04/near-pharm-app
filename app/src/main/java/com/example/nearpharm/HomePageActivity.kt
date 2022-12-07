@@ -21,7 +21,7 @@ class HomePageActivity: AppCompatActivity() {
     private val createProduct by viewProvider<FloatingActionButton>(R.id.fab)
     private val pharmacies by viewProvider<RecyclerView>(R.id.recycler)
     private val products by viewProvider<RecyclerView>(R.id.recycler_products)
-    private val isPharm by extraProvider<Boolean>("is-pharm-extra")
+    private var isPharm by extraProvider<Boolean>("is-pharm-extra")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,8 +31,7 @@ class HomePageActivity: AppCompatActivity() {
             setupDataUser()
         } else {
             setContentView(R.layout.homepage_pharm_activity)
-            products.layoutManager =
-                LinearLayoutManager(this@HomePageActivity, LinearLayoutManager.VERTICAL, false)
+            products.layoutManager = LinearLayoutManager(this@HomePageActivity, LinearLayoutManager.VERTICAL, false)
             setupPharmacy()
         }
     }
@@ -44,43 +43,41 @@ class HomePageActivity: AppCompatActivity() {
     }
 
     private fun setupPharmacy(){
-        pharmacyViewModel.getPharmacies().observe(this) {
-            data {
-                val adapaterProducts = ProductAdapter(listOf(
-                    ProductModel(
-                        0,
-                        "Dipirona 500mg",
-                        9.00,
-                        "Analgésico"
-                    ),
-                    ProductModel(
-                        1,
-                        "Diclofenaco Potássico 250mg",
-                        12.00,
-                        "Anti-inflamatório"
-                    ),
-                    ProductModel(
-                        2,
-                        "Polaramine 2mg",
-                        15.00,
-                        "Antialérgico"
-                    ),
-                    ProductModel(
-                        2,
-                        "Polaramine 2mg",
-                        15.00,
-                        "Antialérgico"
-                    ),
-                    ProductModel(
-                        2,
-                        "Polaramine 2mg",
-                        15.00,
-                        "Antialérgico"
-                    )
-                ))
-                products.adapter = adapaterProducts
-            }
-        }
+        val adapterProducts = ProductAdapter(listOf(
+            ProductModel(
+                0,
+                "Dipirona 500mg",
+                9.00,
+                "Analgésico"
+            ),
+            ProductModel(
+                1,
+                "Diclofenaco Potássico 250mg",
+                12.00,
+                "Anti-inflamatório"
+            ),
+            ProductModel(
+                2,
+                "Polaramine 2mg",
+                15.00,
+                "Antialérgico"
+            ),
+            ProductModel(
+                2,
+                "Polaramine 2mg",
+                15.00,
+                "Antialérgico"
+            ),
+            ProductModel(
+                2,
+                "Polaramine 2mg",
+                15.00,
+                "Antialérgico"
+            )
+        ))
+        products.adapter = adapterProducts
+
+
         createProduct.setOnClickListener {
             val intent = Intent(this, AddNewProductActivity::class.java)
             startActivity(intent)

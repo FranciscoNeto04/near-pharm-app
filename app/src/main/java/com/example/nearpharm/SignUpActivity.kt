@@ -39,9 +39,9 @@ class SignUpActivity: AppCompatActivity(R.layout.signup_activity) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setupInformationForm()
         clientInformationForm.isVisible = false
         pharmInformationForm.isVisible = false
+        setupInformationForm()
         signUpButton.setOnClickListener {
             val isUser = isUserSignUp()
             pharmacyViewModel.signUpUser(

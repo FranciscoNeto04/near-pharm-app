@@ -51,10 +51,10 @@ class LoginActivity : AppCompatActivity(R.layout.login_activity) {
             }
             override fun onResponse(call: retrofit2.Call<ResponseBody>, response: Response<ResponseBody>) {
                 if (response.code() == 200) {
-                    pharmacyViewModel.getUser("500").observe(this@LoginActivity) {
+                    pharmacyViewModel.getUser("1").observe(this@LoginActivity) {
                         data {
+                            com.example.nearpharm.model.UserData.isPharm = it.isPharm
                             val intent = Intent(this@LoginActivity, HomePageActivity::class.java)
-                            intent.putExtra("id-user-extra", it.cpf)
                             intent.putExtra("is-pharm-extra", it.isPharm)
                             startActivity(intent)
                         }

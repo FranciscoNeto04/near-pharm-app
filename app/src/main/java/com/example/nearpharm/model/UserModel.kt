@@ -8,3 +8,7 @@ class UserModel (
     val password: String,
     val isPharm: Boolean
 )
+
+object UserData {
+    var isPharm: Boolean = false
+}
