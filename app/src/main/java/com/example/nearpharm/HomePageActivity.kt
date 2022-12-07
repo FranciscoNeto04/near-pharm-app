@@ -21,25 +21,20 @@ class HomePageActivity: AppCompatActivity() {
     private val createProduct by viewProvider<FloatingActionButton>(R.id.fab)
     private val pharmacies by viewProvider<RecyclerView>(R.id.recycler)
     private val products by viewProvider<RecyclerView>(R.id.recycler_products)
-    private val pharmacyId by extraProvider<Boolean>("is-pharm-extra")
+    private val isPharm by extraProvider<Boolean>("is-pharm-extra")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        pharmacyViewModel.getUser(pharmacyId.toString()).observe(this) {
-            data {
-                if(!it.isPharm) {
-                    setContentView(R.layout.homepage_user_activity)
-                    pharmacies.layoutManager = LinearLayoutManager(this@HomePageActivity, LinearLayoutManager.VERTICAL, false)
-                    setupDataUser()
-                } else {
-                    setContentView(R.layout.homepage_pharm_activity)
-                    products.layoutManager = LinearLayoutManager(this@HomePageActivity, LinearLayoutManager.VERTICAL, false)
-                    setupPharmacy()
-                }
-            }
+        if(isPharm == false) {
+            setContentView(R.layout.homepage_user_activity)
+            pharmacies.layoutManager = LinearLayoutManager(this@HomePageActivity, LinearLayoutManager.VERTICAL, false)
+            setupDataUser()
+        } else {
+            setContentView(R.layout.homepage_pharm_activity)
+            products.layoutManager =
+                LinearLayoutManager(this@HomePageActivity, LinearLayoutManager.VERTICAL, false)
+            setupPharmacy()
         }
-
     }
 
     private fun onClickPharmacy(userModel: UserModel) {
