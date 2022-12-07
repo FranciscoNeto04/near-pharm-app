@@ -59,4 +59,5 @@ dependencies {
     implementation "br.com.concrete:canarinho:2.0.0"
     implementation "br.com.arch.toolkit:delegate:0.8.1"
     implementation "br.com.arch.toolkit:livedata:0.8.1"
+    implementation "com.github.gustafah:mock-interceptor-noclient:1.4.0"
 }

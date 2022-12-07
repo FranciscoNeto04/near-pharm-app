@@ -1,13 +1,15 @@
 package com.example.nearpharm.api
 
 import com.example.nearpharm.model.UserModel
+import com.gustafah.android.mockinterceptor.Mock
 import retrofit2.http.*
 
 interface UserApi {
-    @POST("/account/register")
-    suspend fun singUpUser(@Body user: UserModel): Unit
-    @PUT("account/{idUsuario}")
-    suspend fun updateUserInfo(@Path("idUsuario") idUser: Int, @Body user: UserModel): Unit
     @GET("account/{idUsuario}")
-    suspend fun getUser(@Path("idUsuario") idUser: Int) : UserModel
+    @Mock("assets/pharmacy_users.json")
+    suspend fun getUserPharmacy(@Path("idUsuario") idUser: Long) : List<UserModel>
+
+    @GET("account/{idUsuario}")
+    @Mock("assets/pharmacy.json")
+    suspend fun getPharmacy(@Path("idUsuario") idUser: Long) : UserModel
 }

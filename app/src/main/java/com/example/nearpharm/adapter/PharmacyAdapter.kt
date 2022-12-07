@@ -11,7 +11,7 @@ import com.example.nearpharm.model.UserModel
 
 import com.squareup.picasso.Picasso
 
-class PharmacyAdapter (private val pharmlist: List<UserModel>, val onClick: (UserModel) -> Unit, private val distance: Double):  RecyclerView.Adapter<PharmViewHolder>(){
+class PharmacyAdapter (private val pharmlist: List<UserModel>, private val distance: Double, val onClick: (UserModel) -> Unit):  RecyclerView.Adapter<PharmViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PharmViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.pharm_item, parent, false)
         return PharmViewHolder(itemView)
